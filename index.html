@@ -4,22 +4,36 @@
     <meta charset="UTF-8">
     <title>大屏首页</title>
     <link type="text/css" href="css/reset.css" rel="stylesheet"/>
-    <link type="text/css" href="css/common.css" rel="stylesheet"/>
+    <link type="text/css" href="css/style.css" rel="stylesheet"/>
     <script type="text/javascript" src="js/echarts/echarts.js"></script>
 </head>
 <body>
     <div class="main-container">
-        <div class="">
-            <div class="chart-pie-sex" style="width:25vm; height: 50vh;"></div>
-            <div class="chart-map" style="width:50vm; height: 50vh;"></div>
-            <div class="">
-                <div class="chart-pie-userFrom" style="width:25vm; height: 25vh;"></div>
-                <div class="chart-funnel-userRate" style="width:25vm; height: 25vh;"></div>
+        <div class="title">
+            <h2>数据作战室</h2>
+            <p>累计订单金额：亿元</p>
+        </div>
+        <div class="clearfix box-top">
+            <div class="left box-top-lr" style="width:30%; height: 60%;">
+                <div class="chart-pie-sex" style="width: 300px; height:300px"></div>
             </div>
+            <div class="left box-top-center" style="width:40%; height: 60%;">
+                <div class="chart-map" style="width:500px; height: 600px;"></div>
+            </div>
+            <div class="left box-top-lr" style="width:30%; height: 60%;">
+                <div class="chart-pie-userFrom" style="width: 300px; height:300px"></div>
+                <div class="chart-funnel-userRate" style="width: 300px; height:300px"></div>
+            </div>
+        </div>
+        <div class="box-bottom">
+            <div class="chart-line" style="width:1100px; height: 400px;"></div>
         </div>
     </div>
 </body>
 <script type="text/javascript">
+
+    console.log('宽'+ document.body.clientWidth);
+    console.log('高' + document.body.clientHeight)
   // 路径配置
   require.config({
     paths: {
@@ -33,7 +47,8 @@
       'echarts',
       'echarts/chart/map', // 使用柱状图就加载bar模块，按需加载
       'echarts/chart/pie',
-      'echarts/chart/funnel'
+      'echarts/chart/funnel',
+      'echarts/chart/line'
     ],
     function (ec) {
       // 基于准备好的dom，初始化echarts图表
@@ -41,6 +56,7 @@
       var chartPieSex = ec.init(document.querySelector('.chart-pie-sex'));
       var chartPieUserFrom = ec.init(document.querySelector('.chart-pie-userFrom'));
       var chartFunnelUserRate = ec.init(document.querySelector('.chart-funnel-userRate'));
+      var chartLine = ec.init(document.querySelector('.chart-line'));
 
       var option_chartMap = {
         backgroundColor: '#1b1b1b',
@@ -506,26 +522,25 @@
           'rgba(55, 200, 100, 0.5)'
         ],
         title : {
-          text: '漏斗图',
-          subtext: '纯属虚构'
+          // text: '漏斗图',
         },
         tooltip : {
           trigger: 'item',
           formatter: "{a} <br/>{b} : {c}%"
         },
-        toolbox: {
-          show : true,
-          feature : {
-            mark : {show: true},
-            dataView : {show: true, readOnly: false},
-            restore : {show: true},
-            saveAsImage : {show: true}
-          }
-        },
-        legend: {
-          data : ['展现','点击','访问','咨询','订单']
-        },
-        calculable : true,
+        // toolbox: {
+        //   show : true,
+        //   feature : {
+        //     mark : {show: true},
+        //     dataView : {show: true, readOnly: false},
+        //     restore : {show: true},
+        //     saveAsImage : {show: true}
+        //   }
+        // },
+        // legend: {
+        //   data : ['展现','点击','访问','咨询','订单']
+        // },
+        calculable : false,
         series : [
           {
             name:'预期',
@@ -549,11 +564,11 @@
               }
             },
             data:[
-              {value:60, name:'访问'},
-              {value:40, name:'咨询'},
-              {value:20, name:'订单'},
-              {value:80, name:'点击'},
-              {value:100, name:'展现'}
+              {value:60, name:'身份认证'},
+              {value:40, name:'绑卡'},
+              {value:20, name:'运营商授权'},
+              {value:80, name:'上传通讯录'},
+              {value:100, name:'订单数量'}
             ]
           },
           {
@@ -582,12 +597,85 @@
               }
             },
             data:[
-              {value:30, name:'访问'},
-              {value:10, name:'咨询'},
-              {value:5, name:'订单'},
-              {value:50, name:'点击'},
-              {value:80, name:'展现'}
+              {value:30, name:'身份认证'},
+              {value:10, name:'绑卡'},
+              {value:5, name:'运营商授权'},
+              {value:50, name:'上传通讯录'},
+              {value:80, name:'订单数量'}
             ]
+          }
+        ]
+      };
+      var option_line =  {
+        backgroundColor: '#fff',
+        // title : {
+        //   text : '时间坐标折线图',
+        //   subtext : 'dataZoom支持'
+        // },
+        tooltip : {
+          trigger: 'item',
+          formatter : function (params) {
+            var date = new Date(params.value[0]);
+            data = date.getFullYear() + '-'
+              + (date.getMonth() + 1) + '-'
+              + date.getDate();
+            return data + '<br/>'
+              + params.value[1] + ', '
+              + params.value[2];
+          }
+        },
+        toolbox: {
+          show : true,
+          feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            restore : {show: true},
+            saveAsImage : {show: true}
+          }
+        },
+        dataZoom: { //数据区域缩放
+          show: true,
+          start : 70
+        },
+        legend : {
+          data : ['series1']
+        },
+        grid: {
+          y2: 80
+        },
+        xAxis : [
+          {
+            type : 'time',
+            splitNumber:10
+          }
+        ],
+        yAxis : [
+          {
+            type : 'value'
+          }
+        ],
+        series : [
+          {
+            name: 'series1',
+            type: 'line',
+            showAllSymbol: true,
+            symbolSize: function (value){
+              return Math.round(value[2]/10) + 2;
+            },
+            data: (function () {
+              var d = [];
+              var len = 0;
+              var now = new Date();
+              var value;
+              while (len++ < 200) {
+                d.push([
+                  new Date(2016, 9, 1, 0, len * 10000),
+                  (Math.random()*30).toFixed(2) - 0,
+                  (Math.random()*100).toFixed(2) - 0
+                ]);
+              }
+              return d;
+            })()
           }
         ]
       };
@@ -597,6 +685,7 @@
       chartPieSex.setOption(option_chartPie_sex);
       chartPieUserFrom.setOption(option_chartPie_userFrom);
       chartFunnelUserRate.setOption(option_chartFunnel_userRate);
+      chartLine.setOption(option_line);
     }
   );
 </script>
