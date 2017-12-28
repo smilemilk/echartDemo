@@ -1,11 +1,28 @@
+.bodyBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+}
 .main-container{
     position: relative;
+    box-sizing: border-box;
+    padding: 0;
+    width: 1920px;
+    height: 1080px;
+    z-index: 1;
+    overflow: hidden;
+    transform-origin: left top;
 }
 .title {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateY(-50%);
+    /*background: url(../image/mapHdBg.png) no-repeat center center;*/
+    /*background-size: 100% 110px;*/
+    /*width: 100%;*/
+    /*height: 110px;*/
+    /*line-height: 110px;*/
+    /*text-align: center;*/
 }
 .title h2{
     text-align: center;
@@ -21,4 +38,68 @@
     padding: 10px;
     color: #fff;
     box-sizing: border-box;
+}
+.chart-top{
+    text-align: center;
+}
+.chart-top .top-title {
+    display: inline-block;
+    text-align: center;
+}
+.chart-top .top-title dd,.chart-top .top-title dt {
+    float: left;
+    font-size: 14px;
+    line-height: 1.75;
+    color: #fff;
+    opacity: .5;
+}
+.chart-top .top-item,.chart-top .top-title {
+    *zoom: 1;
+}
+.chart-top .top-item{
+    margin-top: 5px;
+}
+.chart-top .top-item:after, .chart-top .top-title:after {
+    content: '';
+    display: block;
+    overflow: hidden;
+    font-size: 0;
+    clear: both;
+}
+.chart-top .top-item dd, .chart-top .top-item dt {
+    float: left;
+    height: 20px;
+    font-size: 14px;
+    color: #fff;
+}
+.chart-top .top-item .top-item-l,.chart-top .top-item .top-item-r {
+    width: calc(50% - 36px);
+    height: 20px;
+}
+.chart-top .top-item .top-item-title {
+    width: 56px;
+    text-align: center;
+    line-height: 20px;
+    vertical-align: top;
+}
+.chart-top .top-item .top-item-l {
+    text-align: right;
+}
+.chart-top .top-item .top-item-r {
+    text-align: left;
+}
+.chart-top .top-item .top-item-l .top-item-inner{
+    display: inline-block;
+    height:100%;
+    background-color: #ff3333;
+    background: linear-gradient(left,#ff3333, orange);
+    background: -webkit-linear-gradient(left,#ff3333, orange);
+    background: -ms-linear-gradient(left,#ff3333, orange);
+}
+.chart-top .top-item .top-item-r .top-item-inner{
+    display: inline-block;
+    background: linear-gradient(left,orange, lime);
+    background: -webkit-linear-gradient(left,orange, lime );
+    background: -ms-linear-gradient(left,orange, lime);
+    height:100%;
 }

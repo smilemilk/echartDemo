@@ -4,58 +4,38 @@
     <meta charset="UTF-8">
     <title>大屏首页</title>
     <script type="text/javascript" src="js/echarts/echarts.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 </head>
 <body>
-    <div class="main-container" id="main" style="width:600px; height: 400px;"></div>
+    <div id="app">
+        <h1>hello app!</h1>
+        <p>
+            <!--使用router-link组件来导航-->
+            <!--通过传入to属性指定链接-->
+            <!--<router-link>默认会渲染成一个<a>标签-->
+            <router-link to="/foo">Go to Foo</router-link>
+            <router-link to="/bar">Go to Bar</router-link>
+        </p>
+        <!--路由出口-->
+        <!--路由匹配到的组件将渲染在这里-->
+        <router-view></router-view>
+    </div>
 </body>
 <script type="text/javascript">
-  // 路径配置
-  require.config({
-    paths: {
-      echarts: 'js/echarts'
-    }
-  });
-
-  // 使用
-  require(
-    [
-      'echarts',
-      'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
-    ],
-    function (ec) {
-      // 基于准备好的dom，初始化echarts图表
-      var myChart = ec.init(document.getElementById('main'));
-
-      var option = {
-        tooltip: {
-          show: true
-        },
-        legend: {
-          data:['销量']
-        },
-        xAxis : [
-          {
-            type : 'category',
-            data : ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-          }
-        ],
-        yAxis : [
-          {
-            type : 'value'
-          }
-        ],
-        series : [
-          {
-            "name":"销量",
-            "type":"bar",
-            "data":[5, 20, 40, 10, 10, 20]
-          }
-        ]
-      };
-
-      // 为echarts对象加载数据
-      myChart.setOption(option);
-    }
-  );
+    //0 如果使用模块化机制编程，导入Vue和VueRouter，要调用Vue.use(VueRouter)
+    //1 定义（路由）组件
+    //可以从其他文件import进来
+    const Foo = {template: '<div>foo</div>'}
+    const Bar = {template: '<div>bar</div>'}
+    //2 定义路由
+    //每个路由应该映射一个组件。其中component可以是
+    //通过Vue.extend()构建的组件构造器
+    //或者，只是一个组件配置对象
+    const routes = [
+      {path: '/foo', component: Foo},
+      {path: '/bar', component: Bar}
+    ]
+    //
 </script>
 </html>
