@@ -16,7 +16,14 @@
     overflow: hidden;
     transform-origin: left top;
 }
+.box-top-center {
+    position: relative;
+}
 .title {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
     /*background: url(../image/mapHdBg.png) no-repeat center center;*/
     /*background-size: 100% 110px;*/
     /*width: 100%;*/

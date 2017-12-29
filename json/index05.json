@@ -1,0 +1,69 @@
+{
+  "dataMap": [
+    [{"name": "杭州"}, {"name": "上海", "value": 100}],
+    [{"name": "杭州"}, {"name": "广州", "value": 20}],
+    [{"name": "杭州"}, {"name": "大连", "value": 50}],
+    [{"name": "杭州"}, {"name": "南宁", "value": 90}],
+    [{"name": "杭州"}, {"name": "南昌", "value": 33}],
+    [{"name": "杭州"}, {"name": "拉萨", "value": 66}],
+    [{"name": "杭州"}, {"name": "长春", "value": 35}],
+    [{"name": "杭州"}, {"name": "包头", "value": 96}],
+    [{"name": "杭州"}, {"name": "重庆", "value": 55}],
+    [{"name": "杭州"}, {"name": "常州", "value": 14}]
+  ],
+  "dataMapItem": [
+    {"name": "上海", "value": 100},
+    {"name": "广州", "value": 20},
+    {"name": "大连", "value": 50},
+    {"name": "南宁", "value": 90},
+    {"name": "南昌", "value": 33},
+    {"name": "拉萨", "value": 66},
+    {"name": "长春", "value": 35},
+    {"name": "包头", "value": 96},
+    {"name": "重庆", "value": 55},
+    {"name": "常州", "value": 14}
+  ],
+  "dataPieSex": [
+    {"value": 170, "name": "女"},
+    {"value": 200, "name": "男"}
+  ],
+  "dataPieAge": [
+    {"value": 60, "name": "[18,24]"},
+    {"value": 400, "name": "[25,30]"},
+    {"value": 450, "name": "[31,40]"},
+    {"value": 220, "name": "[41,50]"},
+    {"value": 66, "name": "50岁以上"}
+  ],
+  "dataPieUserFromT": [
+    {"value": 344, "name": "直达"},
+    {"value": 587, "name": "营销广告"},
+    {"value": 2009, "name": "搜索引擎"}
+  ],
+  "dataPieUserFrom": [
+    {"value": 455, "name": "直达"},
+    {"value": 299, "name": "邮件营销"},
+    {"value": 398, "name": "联盟广告"},
+    {"value": 178, "name": "视频广告"},
+    {"value": 999, "name": "百度"},
+    {"value": 398, "name": "谷歌"},
+    {"value": 200, "name": "必应"},
+    {"value": 176, "name": "其他"}
+  ],
+  "dataFunnel": [
+    {"value": 77, "name": "身份认证"},
+    {"value": 87, "name": "绑卡"},
+    {"value": 34, "name": "运营商授权"},
+    {"value": 90, "name": "上传通讯录"},
+    {"value": 33, "name": "订单数量"}
+  ],
+   "dataFunnelT": [
+    {"value": 44, "name": "身份认证"},
+    {"value": 30, "name": "绑卡"},
+    {"value": 10, "name": "运营商授权"},
+    {"value": 34, "name": "上传通讯录"},
+    {"value": 74, "name": "订单数量"}
+  ],
+  "dataLine01": [20, 13, 26, 19, 14, 10, 19],
+  "dataLine02": [5, 9, 10, 7, 10, 3, 5],
+  "dataLine03": [6, 5, 3, 8, 9, 4, 7]
+}
